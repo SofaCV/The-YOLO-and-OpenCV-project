@@ -3,6 +3,7 @@
 ## Установка
 pip install -r requirements.txt
 
-## Запуск
-python src/main.py          # детекция на изображениях
-python run_demo.py          # детекция/трекинг на видео
+## Запуск детекции на изображениях (кадры)
+python src/main.py    
+## Запуск детекции/трекинга на видео      
+python run_demo.py          
