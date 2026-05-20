@@ -4,16 +4,12 @@ from pathlib import Path
 BASE_DIR = Path(__file__).parent.parent
 
 DATA_DIR = BASE_DIR / "data"
-VISDRONE_IMAGES_DIR = DATA_DIR / "VisdroneFrames"
-VISDRONE_ANNOTATIONS_DIR = DATA_DIR / "markup"
+VISDRONE_IMAGES = DATA_DIR / "VisdroneFrames"
+VISDRONE_ANNOTATIONS = DATA_DIR / "markup"
+TEST_VIDEO = DATA_DIR / "test_video"
 
 PROCESSED_DATA_DIR = DATA_DIR / "processed"
 PROCESSED_FRAMES_DIR = PROCESSED_DATA_DIR / "frames"
-
-
-TEST_DATA_DIR = BASE_DIR / "test_video"
-TEST_VIDEO_PATH = TEST_DATA_DIR / "тестовое видео 1.mp4"
-
 
 OUTPUT_DIR = BASE_DIR / "output"
 SCREENSHOTS_DIR = OUTPUT_DIR / "screenshots"
