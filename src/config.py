@@ -4,9 +4,9 @@ from pathlib import Path
 BASE_DIR = Path(__file__).parent.parent
 
 DATA_DIR = BASE_DIR / "data"
-VISDRONE_IMAGES = DATA_DIR / "VisdroneFrames"
-VISDRONE_ANNOTATIONS = DATA_DIR / "markup"
-TEST_VIDEO = DATA_DIR / "test_video"
+VSDR_IMAGES = DATA_DIR / "VisdroneFrames"
+VSDR_ANNOT = DATA_DIR / "markup.txt"
+TEST_VIDEO = DATA_DIR / "test_video.mp4"
 
 PROCESSED_DATA_DIR = DATA_DIR / "processed"
 PROCESSED_FRAMES_DIR = PROCESSED_DATA_DIR / "frames"
