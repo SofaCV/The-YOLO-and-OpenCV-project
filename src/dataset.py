@@ -7,7 +7,7 @@ from src.config import VSDR_IMAGES, VSDR_ANNOT, TEST_VIDEO
 
 
 class ImageReader:  # Чтение фото
-    def __init__(self, images_dir=None):
+    def __init__(self, images_dir=VSDR_IMAGES):
         self.images_dir = images_dir if images_dir else VSDR_IMAGES
         self.image_files: List[Path] = []
         self._load_image_list()
@@ -19,8 +19,8 @@ class ImageReader:  # Чтение фото
 
     def get_image(self, frame_id: int) -> Optional[np.ndarray]:
         if frame_id >= len(self.image_files):
-            return None 
-        image_path = self.image_files[frame_id] 
+            return None
+        image_path = self.image_files[frame_id]
         image = cv2.imread(str(image_path))
         if image is None:
             return None
