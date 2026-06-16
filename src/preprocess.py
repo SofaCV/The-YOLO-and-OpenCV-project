@@ -1,5 +1,5 @@
-# Предобработка перед YOLO
-# Для случаев, когда низкая контрастность, проблемы с недосветом/пересветом
+"""Модуль предобработки изображений с БПЛА."""
+
 import cv2
 import numpy as np
 from typing import Tuple
@@ -9,11 +9,9 @@ def __apply_clahe_if_needed(
     frame: np.ndarray,
     std_threshold: float = 35.0,
     clip_limit: float = 2.0,
-    grid_size: Tuple[int, int] = (8, 8),
+    grid_size: Tuple[int, int] = (4, 4),
 ) -> np.ndarray:
-    """Метод для повышения контрастности.
-    std_threshold - порогове значение стандартного отклонения
-    grid_size - размер сетки локальной обработки"""
+    """Повышение контрастности изображения при необходимости."""
     gray = cv2.cvtColor(frame, cv2.COLOR_RGB2GRAY)
 
     if gray.std() < std_threshold:
@@ -33,13 +31,7 @@ def __apply_gamma_if_needed(
     gamma_low: float = 1.8,
     gamma_high: float = 0.7,
 ) -> np.ndarray:
-    """Метод для повышения общей яркости. Необходим, когда изображение
-    слишком темное или слишкм светлое.
-    low_threshold - порогове значение темноты.
-    high_threshold - порогове значение светлоты.
-    gamma_low - коэффициент коррекции для темных изображений
-    gamma_high - коэффициент коррекции для светлых изображений"""
-
+    """Коррекция гаммы для слишком темных или светлых изображений."""
     gray = cv2.cvtColor(frame, cv2.COLOR_RGB2GRAY)
     mean_bright = gray.mean()
 
@@ -73,6 +65,7 @@ def preprocess_frame(
     low_threshold: float = 70.0,
     high_threshold: float = 200.0,
 ) -> np.ndarray:
+    """Основная функция предобработки кадра."""
     if frame is None:
         return None
 
@@ -81,5 +74,5 @@ def preprocess_frame(
 
     if enable_gamma:
         frame = __apply_gamma_if_needed(frame, low_threshold, high_threshold)
-        
+
     return frame
